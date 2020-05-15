@@ -10,7 +10,9 @@
 
 2.Download Lemon-ate by typing "https://github.com/whitehauler/lemon-ate.git"
 
-3.Install it by executing "cd $HOME/Lemon && sh Install" without quotes.
+3.type "ls" and open lemon-ate by cd command 
+
+3.Install it by executing "sh Install" without quotes with Root privilege.
 
 **How to use :-**
 
