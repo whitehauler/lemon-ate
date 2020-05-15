@@ -1,0 +1,14 @@
+clear
+echo "     IMPORTANT!!"
+echo " If you choose Ngrok, then LHOST=0.tcp.ngrok.io, LPORT= You will see your port after the link you get in ngrok."
+echo " If you choose Serveo, then LHOST=serveo.net, LPORT= Enter the port you typed in "sh payload"."
+echo "Continue?"
+read -p '>>> ' c
+if [ $c = no ] ; then
+echo "Abort"
+else
+cd
+clear
+msfconsole -r automate.rc
+fi
+

