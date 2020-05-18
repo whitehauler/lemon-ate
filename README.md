@@ -12,4 +12,4 @@
 
 3.type "ls" and open lemon-ate by cd command 
 
-3.Install it by executing "sh Install" without quotes using Root privilege.
+3.Install it by executing "sh Install" using Root privilege.
