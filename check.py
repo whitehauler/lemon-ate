@@ -6,7 +6,7 @@ except ImportError:
     print('requests not found')
     print('Install using pip install requests')
     os.kill(os.getppid(), signal.SIGINT)
-    exit()
+    exit(1)
 def check():
  res = False
  try:
@@ -19,6 +19,6 @@ def check():
      print("Please check your Internet connection")
      os.kill(os.getppid(), signal.SIGINT)
 check()
-exit()
+exit(0)
     
 

@@ -1,14 +1,14 @@
-clear
-echo ‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ | lolcat
-echo [+]  Starting your local php Server | lolcat
-echo . | lolcat
-echo . | lolcat
-echo . | lolcat
-echo . | lolcat
-echo ‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ | lolcat
-figlet L e m o n | lolcat -a -d 5
-figlet H a c k i n g | lolcat -a -d 5
-echo ‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡ | lolcat
-php -t $HOME/Lemon -S localhost:4545
-clear
-printf "\033[1;31m[-] Please make sure you are connected to the Internet :(\033[0m\n"
+#!/bin/sh
+
+echo "‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡" 
+echo -e "\e[32m[+]  Starting your local php Server\e[0m"
+echo "‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡‡"
+
+if php -t . -S localhost:4545;
+then
+	exit 0
+else
+	printf "\033[1;31m[-] Please make sure you are connected to the Internet :(\033[0m\n"
+	exit 1
+fi
+

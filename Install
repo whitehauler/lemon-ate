@@ -1,39 +1,27 @@
-clear
-apt-get install openssh
-clear
-apt-get install php
-clear
-apt-get install figlet
-clear
-apt-get install python
-clear
-apt-get install ruby
-clear
-gem install lolcat
-clear
-apt-get install toilet
-clear && cp Handler payload ssh php persistence.sh automate.rc check.py $HOME
-cd
-chmod +x php
-chmod +x ssh
-chmod +x payload
-chmod +x Handler
-chmod +x persistence.sh
-chmod +x check.py
-clear
-echo Do you have Metasploit Installed? | lolcat
-read -p '>> ' ans
-if [ $ans = no ]
+#!/bin/sh
+
+printf '[+] Requirement Installation \n'
+
+apt-get install php python ruby
+
+printf 'Setting Permission'
+chmod +x php ssh payload Handler \
+	  persistence.sh check.py
+
+printf 'Do you have Metasploit Installed?'
+read -p '[y/n] >> ' ans
+if [ $ans = n ]
 then
-echo Do you want to install Metasploit? | lolcat
-read -p '>>' asw
-if [ $asw = yes ]
-then
-echo Installing Metasploit.. | lolcat && apt-get install unstable-repo && clear
-apt-get install metasploit
+	echo "Do you want to install Metasploit?"
+	read -p '>>' ques
+	if [ $ques = y ]
+	then
+		apt-get install unstable-repo
+		apt-get install metasploit
+	fi
 fi
-fi
-figlet -s n00b
+
+exit 0
 
 
 
